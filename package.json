@@ -1,9 +1,10 @@
 {
   "name": "contactbackend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "jest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,5 +14,9 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "nodemailer": "^6.6.5"
+  },
+  "devDependencies": {
+    "jest": "^27.2.3",
+    "supertest": "^6.1.6"
   }
 }
