@@ -30,7 +30,6 @@ var mailOptions = {
  * @param {*} next 
  */
 function validContactPostBody(req, res, next) {
-    console.log(req.body);
     if(req.body.name != null && req.body.email != null && req.body.text != null) {
         next();
     } else {
