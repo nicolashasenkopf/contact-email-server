@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+const rateLimit = require("express-rate-limit");
 
 // Read .env file
 require('dotenv').config()
@@ -18,6 +19,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // limit each IP to 100 requests per windowMs
+  message: "Too many request! Please try again later" // send error message when max requests were sent
+});
+
+//  apply to all requests
+app.use(limiter);
 
 // check for .env file to be completed
 app.use((req, res, next) => {
