@@ -31,7 +31,7 @@ app.use(limiter);
 
 // check for .env file to be completed
 app.use((req, res, next) => {
-  if(process.env.EMAIL_USER && process.env.EMAIL_PASSWORD && process.env.EMAIL_SERVICE) {
+  if(process.env.PORT && process.env.EMAIL_USER && process.env.EMAIL_PASSWORD && process.env.EMAIL_SERVICE) {
     next();
   } else {
     res.status(500).json({
@@ -53,6 +53,10 @@ app.use(function(req, res, next) {
       message: "This path does not exist"
     }
   });
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Started contact-email-backend on port " + process.env.PORT || 3000);
 });
 
 module.exports = app;
