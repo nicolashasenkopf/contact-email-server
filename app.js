@@ -31,7 +31,7 @@ app.use(limiter);
 
 // check for .env file to be completed
 app.use((req, res, next) => {
-  if(process.env.PORT && process.env.EMAIL_USER && process.env.EMAIL_PASSWORD && process.env.EMAIL_SERVICE) {
+  if(process.env.PORT && process.env.EMAIL_USER && process.env.EMAIL_PASSWORD && process.env.EMAIL_HOST) {
     next();
   } else {
     res.status(500).json({
